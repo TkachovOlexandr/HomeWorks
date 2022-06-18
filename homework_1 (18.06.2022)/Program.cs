@@ -76,16 +76,16 @@ namespace homework_1
             //else
             //    Console.WriteLine("Your number isn't six digits");
 
-            //Exercise #5                                                   !!!!!not finished yet!!!!!
+            //Exercise #5
             Console.Write("Write the date: ");
             string person_date = Console.ReadLine();
             short person_day = 0;
             short person_month = 0;
             short person_year = 0;
             short[] dot_place = {0, 0, 0};
-            for (short i = 0; i < person_date.Length; i++)
+            foreach (var item in person_date)
             {
-                if (person_date[i] == '.')
+                if (item == '.')
                 {
                     for (short j = 0; j < dot_place.Length; j++)
                     {
@@ -97,13 +97,13 @@ namespace homework_1
                     }
                 }
                 else if (dot_place[0] == 0)
-                    person_day = Convert.ToInt16(person_day * 10 + Convert.ToInt16(person_date[i]));
+                    person_day = Convert.ToInt16(person_day * 10 + short.Parse(item.ToString()));
                 else if (dot_place[1] == 0)
-                    person_month = Convert.ToInt16(person_month * 10 + Convert.ToInt16(person_date[i]));
+                    person_month = Convert.ToInt16(person_month * 10 + short.Parse(item.ToString()));
                 else if (dot_place[2] == 0)
-                    person_year = Convert.ToInt16(person_year * 10 + Convert.ToInt16(person_date[i]));
+                    person_year = Convert.ToInt16(person_year * 10 + short.Parse(item.ToString()));
             }
-            Console.WriteLine(person_day + '.' + person_month + '.' + person_year);
+            Console.WriteLine($"{person_day}.{person_month}.{person_year}");
             if (person_month < 3 || person_month > 11)
                 Console.Write("Winter ");
             else if (person_month > 2 && person_month < 6)
@@ -127,17 +127,28 @@ namespace homework_1
                 max_month = comparative_month;
                 min_month = person_month;
             }
-            for (short i = 0; i < max_month; i++)
-            {
-                if (i + 1 > min_month)
-                    day_sum += day_in_month[i];
-            }
+            for (short i = Convert.ToInt16(min_month - 1); i < Convert.ToInt16(max_month - 1); i++)
+                day_sum += day_in_month[i];
             if (person_month > comparative_month)
                 day_sum *= -1;
-            long delta = Convert.ToInt64(365.2425 * (comparative_year - person_year) + day_sum + (comparative_day - person_day));
-            short week_day = Convert.ToInt16(delta % 7);
+            long delta = Convert.ToInt64(365.2425 * (comparative_year - person_year) + day_sum - person_day + comparative_day);
+            if (delta < 0)
+                delta *= -1;
+            short week_day = (short)(delta % 7);
+            if (person_year < comparative_year)
+                week_day = Convert.ToInt16(7 - week_day);
+            else if (person_year == comparative_year)
+            {
+                if (person_month < comparative_month)
+                    week_day = Convert.ToInt16(7 - week_day);
+                else if (person_month == comparative_month)
+                {
+                    if (person_day < comparative_day)
+                        week_day = Convert.ToInt16(7 - week_day);
+                }
+            }
             string[] week_days = {"Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday"};
-            Console.WriteLine(delta + ' ' + week_day + ' ' + week_days[week_day]);
+            Console.WriteLine($"{week_days[week_day]}");//{day_sum} {delta} {week_day} 
 
             //Exercise #6
             //Console.Write("Write the temperature: ");
