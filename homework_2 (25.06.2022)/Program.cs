@@ -183,3 +183,283 @@
 //Console.WriteLine($"Your encrypted string: {answer_str}");
 
 //Exercise #4
+//Console.Write("Write how many rows you want in your matrix: ");
+//short size_r = short.Parse(Console.ReadLine());
+//Console.Write("Write how many columns you want in your matrix: ");
+//short size_c = short.Parse(Console.ReadLine());
+//Console.WriteLine("In this case, your matrix looks like this");
+//for (short i = 0; i <= size_r; i++)
+//{
+//    for (short j = 0; j < size_c; j++)
+//    {
+//        if (i == 0)
+//            Console.Write(" _______________");
+//        else if (i != size_r)
+//            Console.Write($"|\tnum_{(i - 1) * size_c + j + 1}\t");
+//        else
+//        {
+//            string temp_str = $"|_______num_{(i - 1) * size_c + j + 1}";
+//            while (temp_str.Length != 16)
+//                temp_str = temp_str.Insert(temp_str.Length, "_");
+//            Console.Write(temp_str);
+//        }
+//    }
+//    if (i == 0)
+//        Console.WriteLine();
+//    else
+//        Console.WriteLine("|");
+//}
+//short[,] numbers_arr = new short[size_r, size_c];
+//for (short i = 0; i < size_r; i++)
+//{
+//    for (short j = 0; j < size_c; j++)
+//    {
+//        Console.Write($"Write the value of num_{i * size_c + j + 1}: ");
+//        numbers_arr[i, j] = short.Parse(Console.ReadLine());
+//    }
+//}
+//for (short i = -1; i < size_r; i++)
+//{
+//    for (short j = 0; j < size_c; j++)
+//    {
+//        if (i == -1)
+//            Console.Write(" _______________");
+//        else if (i != size_r - 1)
+//            Console.Write($"|\t{numbers_arr[i, j]}\t");
+//        else
+//        {
+//            string temp_str = $"|_______{numbers_arr[i, j]}";
+//            while (temp_str.Length != 16)
+//                temp_str = temp_str.Insert(temp_str.Length, "_");
+//            Console.Write(temp_str);
+//        }
+//    }
+//    if (i == -1)
+//        Console.WriteLine();
+//    else
+//        Console.WriteLine("|");
+//}
+//while (true)
+//{
+//    Console.WriteLine("If you want to multiply the matrix by a number - write '1'");
+//    Console.WriteLine("If you want to add matrices - write '2'");
+//    Console.WriteLine("If you want to multiply matrices - write '3'");
+//    Console.WriteLine("If you want to finish the program - write '0'");
+//    char choice = char.Parse(Console.ReadLine());
+//    if (choice == '1')
+//    {
+//        Console.Write("Write the number to multiply: ");
+//        short num = short.Parse(Console.ReadLine());
+//        for (short i = 0; i < size_r; i++)
+//        {
+//            for (short j = 0; j < size_c; j++)
+//                numbers_arr[i, j] *= num;
+//        }
+//        for (short i = -1; i < size_r; i++)
+//        {
+//            for (short j = 0; j < size_c; j++)
+//            {
+//                if (i == -1)
+//                    Console.Write(" _______________");
+//                else if (i != size_r - 1)
+//                    Console.Write($"|\t{numbers_arr[i, j]}\t");
+//                else
+//                {
+//                    string temp_str = $"|_______{numbers_arr[i, j]}";
+//                    while (temp_str.Length != 16)
+//                        temp_str = temp_str.Insert(temp_str.Length, "_");
+//                    Console.Write(temp_str);
+//                }
+//            }
+//            if (i == -1)
+//                Console.WriteLine();
+//            else
+//                Console.WriteLine("|");
+//        }
+//    }
+//    else if (choice == '2' || choice == '3')
+//    {
+//        Console.WriteLine("The matrix with which you want to perform a mathematical operation on your matrix looks like this");
+//        for (short i = 0; i <= size_r; i++)
+//        {
+//            for (short j = 0; j < size_c; j++)
+//            {
+//                if (i == 0)
+//                    Console.Write(" _______________");
+//                else if (i != size_r)
+//                    Console.Write($"|\tnum_{(i - 1) * size_c + j + 1}\t");
+//                else
+//                {
+//                    string temp_str = $"|_______num_{(i - 1) * size_c + j + 1}";
+//                    while (temp_str.Length != 16)
+//                        temp_str = temp_str.Insert(temp_str.Length, "_");
+//                    Console.Write(temp_str);
+//                }
+//            }
+//            if (i == 0)
+//                Console.WriteLine();
+//            else
+//                Console.WriteLine("|");
+//        }
+//        short[,] addition_numbers_arr = new short[size_r, size_c];
+//        for (short i = 0; i < size_r; i++)
+//        {
+//            for (short j = 0; j < size_c; j++)
+//            {
+//                Console.Write($"Write the value of num_{i * size_c + j + 1}: ");
+//                addition_numbers_arr[i, j] = short.Parse(Console.ReadLine());
+//            }
+//        }
+//        Console.WriteLine("Your newly created matrix:");
+//        for (short i = -1; i < size_r; i++)
+//        {
+//            for (short j = 0; j < size_c; j++)
+//            {
+//                if (i == -1)
+//                    Console.Write(" _______________");
+//                else if (i != size_r - 1)
+//                    Console.Write($"|\t{addition_numbers_arr[i, j]}\t");
+//                else
+//                {
+//                    string temp_str = $"|_______{addition_numbers_arr[i, j]}";
+//                    while (temp_str.Length != 16)
+//                        temp_str = temp_str.Insert(temp_str.Length, "_");
+//                    Console.Write(temp_str);
+//                }
+//            }
+//            if (i == -1)
+//                Console.WriteLine();
+//            else
+//                Console.WriteLine("|");
+//        }
+//        if (choice == '2')
+//        {
+//            for (short i = 0; i < size_r; i++)
+//            {
+//                for (short j = 0; j < size_c; j++)
+//                    numbers_arr[i, j] += addition_numbers_arr[i, j];
+//            }
+//            Console.WriteLine("The result of their addition:");
+//        }
+//        else if (choice == '3')
+//        {
+//            for (short i = 0; i < size_r; i++)
+//            {
+//                for (short j = 0; j < size_c; j++)
+//                    numbers_arr[i, j] *= addition_numbers_arr[i, j];
+//            }
+//            Console.WriteLine("The result of their multiply:");
+//        }
+//        for (short i = -1; i < size_r; i++)
+//        {
+//            for (short j = 0; j < size_c; j++)
+//            {
+//                if (i == -1)
+//                    Console.Write(" _______________");
+//                else if (i != size_r - 1)
+//                    Console.Write($"|\t{numbers_arr[i, j]}\t");
+//                else
+//                {
+//                    string temp_str = $"|_______{numbers_arr[i, j]}";
+//                    while (temp_str.Length != 16)
+//                        temp_str = temp_str.Insert(temp_str.Length, "_");
+//                    Console.Write(temp_str);
+//                }
+//            }
+//            if (i == -1)
+//                Console.WriteLine();
+//            else
+//                Console.WriteLine("|");
+//        }
+//    }
+//    else if (choice == '0')
+//        break;
+//    else
+//        Console.WriteLine("You wrote an incorrect character. Try again.");
+//}
+
+//Exercise #5
+//Console.WriteLine("Write an arithmetic expression in a string (put a space between the numbers and sighs of mathematical operations): ");
+//string ar_expression = Console.ReadLine();
+//ar_expression = ar_expression.Insert(ar_expression.Length, " ");
+//short num_1 = 0;
+//short num_2 = 0;
+//char math_operation = '+';
+//for (short i = 0; i < ar_expression.Length; i++)
+//{
+//    if (Convert.ToInt16(ar_expression[i]) > 47 && Convert.ToInt16(ar_expression[i]) < 59)
+//    {
+//        if (num_1 == 0)
+//        {
+//            short temp = 0;
+//            while (Convert.ToInt16(ar_expression[i]) > 47 && Convert.ToInt16(ar_expression[i]) < 59)
+//            {
+//                num_1 = (short)(num_1 * Math.Pow(10, temp) + short.Parse(ar_expression[i].ToString()));
+//                i++;
+//                temp++;
+//            }
+//        }
+//        else
+//        {
+//            short temp = 0;
+//            while (Convert.ToInt16(ar_expression[i]) > 47 && Convert.ToInt16(ar_expression[i]) < 59)
+//            {
+//                num_2 = (short)(num_2 * Math.Pow(10, temp) + short.Parse(ar_expression[i].ToString()));
+//                i++;
+//                temp++;
+//            }
+//        }
+//    }
+//    else if (Convert.ToInt16(ar_expression[i]) == 43)
+//        math_operation = '+';
+//    else if (Convert.ToInt16(ar_expression[i]) == 45)
+//        math_operation = '-';
+//    if (math_operation == '+')
+//        num_1 += num_2;
+//    else if (math_operation == '-')
+//        num_1 -= num_2;
+//    num_2 = 0;
+//}
+//Console.WriteLine($"Answer: {num_1}");
+
+//Exercise #6
+//Console.Write("Write your line: ");
+//string person_str = Console.ReadLine();
+//for (short i = 0; i < person_str.Length; i++)
+//{
+//    if (person_str[i] == '.')
+//    {
+//        while (true)
+//        {
+//            i++;
+//            if (i != person_str.Length)
+//            {
+//                if (person_str[i] != ' ' && !Char.IsUpper(person_str[i]))
+//                {
+//                    char[] char_arr = person_str.ToCharArray();
+//                    char_arr[i] = Convert.ToChar(Convert.ToInt16(person_str[i]) - 32);
+//                    person_str = new string(char_arr);
+//                    break;
+//                }
+//            }
+//            else
+//                break;
+//        }
+//    }
+//    else if (i == 0 && !Char.IsUpper(person_str[i]))
+//    {
+//        char[] char_arr = person_str.ToCharArray();
+//        char_arr[i] = Convert.ToChar(Convert.ToInt16(person_str[i]) - 32);
+//        person_str = new string(char_arr);
+//    }
+//}
+//Console.WriteLine($"Your corrected string: {person_str}");
+
+//Exercise #7
+Console.Write("Write your string: ");
+string person_str = Console.ReadLine();
+Console.Write("Write the forbidden word: ");
+string forbidden_word = Console.ReadLine();
+string censored_word = new string('*', forbidden_word.Length);
+person_str = person_str.Replace(forbidden_word, censored_word);
+Console.Write($"Your censored string: {person_str}");
