@@ -455,7 +455,7 @@
 //}
 //Console.WriteLine($"Your corrected string: {person_str}");
 
-//Exercise #7
+//Exercise #7 
 Console.Write("Write your string: ");
 string person_str = Console.ReadLine();
 Console.Write("Write the forbidden word: ");
