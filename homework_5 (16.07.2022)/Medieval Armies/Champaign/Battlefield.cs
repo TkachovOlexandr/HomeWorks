@@ -27,6 +27,26 @@ namespace Medieval_Armies.Champaign
         }
 
         public Battlefield() { }
+
+        delegate void ColorOfConsole();
+        ColorOfConsole colorOfConsole;
+
+        private void DarkGreenColor()// Зелёный цвет
+        {
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+        }
+        private void BlueColor()// Синий цвет
+        {
+            Console.BackgroundColor = ConsoleColor.Blue;
+        }
+        private void DarkRedColor()// Красный цвет
+        {
+            Console.BackgroundColor = ConsoleColor.DarkRed;
+        }
+        private void BlackColor()// Чёрный цвет
+        {
+            Console.BackgroundColor = ConsoleColor.Black;
+        }
         public void Show(SoldierBase[] soldiers)// Полностью вывести поле боя на экран
         {
             for (short i = 0; i < Height; i++)
@@ -34,7 +54,7 @@ namespace Medieval_Armies.Champaign
                 for (short j = 0; j < Width; j++)
                 {
                     if (champaign[i, j] == 0)
-                        Console.BackgroundColor = ConsoleColor.DarkGreen;
+                        colorOfConsole = DarkGreenColor;
                     else
                     {
                         bool IsAlive = true;
@@ -49,16 +69,18 @@ namespace Medieval_Armies.Champaign
                         if (IsAlive)
                         {
                             if (champaign[i, j] == 1)
-                                Console.BackgroundColor = ConsoleColor.Blue;
+                                colorOfConsole = BlueColor;
                             else
-                                Console.BackgroundColor = ConsoleColor.DarkRed;
+                                colorOfConsole = DarkRedColor;
                         }
                         else
-                            Console.BackgroundColor = ConsoleColor.Black;
+                            colorOfConsole = BlackColor;
                     }
+                    colorOfConsole?.Invoke();
                     Console.Write(" ");
                 }
-                Console.BackgroundColor = ConsoleColor.Black;
+                colorOfConsole = BlackColor;
+                colorOfConsole?.Invoke();
                 Console.WriteLine();
             }
         }
