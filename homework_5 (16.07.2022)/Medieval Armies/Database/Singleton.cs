@@ -1,6 +1,6 @@
 ﻿namespace Medieval_Armies.Database
 {
-    internal sealed class Singleton
+    internal sealed class Singleton /* Паттерн программирования "Одиночка" */
     {
         private string connection;
         private static Singleton _instance;
